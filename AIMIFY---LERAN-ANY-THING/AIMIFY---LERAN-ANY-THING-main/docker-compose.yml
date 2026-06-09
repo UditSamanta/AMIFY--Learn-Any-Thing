@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tutor_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tutor_user
+      POSTGRES_PASSWORD: tutor_pass
+      POSTGRES_DB: autonomous_tutor
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
